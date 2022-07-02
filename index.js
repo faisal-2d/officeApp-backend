@@ -34,7 +34,7 @@ async function run() {
       });
 
 
-    //   search by name 
+    //   searchbar by name 
     // http://localhost:5000/students/afrin
       app.get("/students/:name", async (req, res) => {
         const name = req.params.name;
@@ -42,7 +42,15 @@ async function run() {
         const result = await studCollection.find(query).toArray();
         res.send(result);
       });
-      
+
+      //get an id
+      http://localhost:5000/student/13
+      app.get("/student/:sn", async (req, res) => {
+        const sn = req.params.sn;
+        const query = {sn : sn};
+        const result = await studCollection.findOne(query);
+        res.send(result);
+      });
 
       
   } finally {
