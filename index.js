@@ -18,7 +18,7 @@ const client = new MongoClient(uri, {  useNewUrlParser: true,  useUnifiedTopolog
 async function run() {
     try {
       await client.connect();
-      const studCollection = client.db("aqeedah").collection("aqeedah 16 list");     
+      const studCollection = client.db("aqeedah_16").collection("aqeedah_16_list");     
   
   
   // ******************************
@@ -52,6 +52,22 @@ async function run() {
         console.log(result)
         res.send(result);
       });
+
+      // insert a field 
+      http://localhost:5000/student/13
+      app.put("/student/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn};
+        const options = { upsert : true };
+        const updateUser = {
+          $set : req.body,
+        }    
+        const result = await studCollection.updateOne(filter, updateUser, options);      
+        res.send({ success: true, result});
+      });
+
+
+      // update filed 
 
       
   } finally {
