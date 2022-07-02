@@ -46,9 +46,10 @@ async function run() {
       //get an id
       http://localhost:5000/student/13
       app.get("/student/:sn", async (req, res) => {
-        const sn = req.params.sn;
+        const sn = parseInt(req.params.sn);
         const query = {sn : sn};
         const result = await studCollection.findOne(query);
+        console.log(result)
         res.send(result);
       });
 
