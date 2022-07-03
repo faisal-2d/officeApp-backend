@@ -68,6 +68,16 @@ async function run() {
 
 
       // update filed 
+      http://localhost:5000/levelOne/13
+      app.put("/levelOne/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : { [`aqeedah1data.${[0]}`] : req.body } ,
+        }    
+        const result = await studCollection.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
 
       
   } finally {
