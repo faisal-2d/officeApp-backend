@@ -42,7 +42,10 @@ async function run() {
       app.get("/students/:name", async (req, res) => {
         const name = req.params.name.toLowerCase();
         const query = {name : {$regex :name}};
-        const result = await studCollection.find(query).toArray();
+        const options = {
+            sort: { "sn": 1 }
+          };
+        const result = await studCollection.find(query, options).toArray();
         res.send(result);
       });
 
