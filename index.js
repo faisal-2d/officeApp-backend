@@ -29,7 +29,10 @@ async function run() {
       // http://localhost:5000/students
       app.get("/students", async (req, res) => {        
           const query = {};
-          const result = await studCollection.find(query).toArray();
+          const options = {
+            sort: { "sn": 1 }
+          };
+          const result = await studCollection.find(query, options).toArray();
           res.send(result);
       });
 
