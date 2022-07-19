@@ -22,12 +22,12 @@ async function run() {
   
   
   // ******************************
-  //     stud list 
+  //     Batch 16
   // ******************************
   
       // get all sudents
-      // http://localhost:5000/students
-      app.get("/students", async (req, res) => {        
+      // http://localhost:5000/students_16
+      app.get("/students_16", async (req, res) => {        
           const query = {};
           const options = {
             sort: { "sn": 1 }
@@ -38,8 +38,8 @@ async function run() {
 
 
     //   searchbar by name 
-    // http://localhost:5000/students/afrin
-      app.get("/students/:name", async (req, res) => {
+    // http://localhost:5000/students_16/afrin
+      app.get("/students_16/:name", async (req, res) => {
         const name = req.params.name.toLowerCase();
         const query = {name : {$regex :name}};
         const options = {
