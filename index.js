@@ -18,72 +18,126 @@ const client = new MongoClient(uri, {  useNewUrlParser: true,  useUnifiedTopolog
 async function run() {
     try {
       await client.connect();
-      const studCollection = client.db("aqeedah_16").collection("aqeedah_16_list");     
+      const aqeedah_17_list = client.db("aqeedah_16").collection("aqeedah_17_list");     
+      const aqeedah_16_list = client.db("aqeedah_16").collection("aqeedah_16_list");     
+      const aqeedah_15_list = client.db("aqeedah_16").collection("aqeedah_15_list");     
+      const aqeedah_14_list = client.db("aqeedah_16").collection("aqeedah_14_list");     
+      const allUsers = client.db("users").collection("all_users");     
   
   
   // ******************************
-  //     Batch 16
-  // ******************************
-  
-      // get all sudents
-      // http://localhost:5000/students_16
-      app.get("/students_16", async (req, res) => {        
-          const query = {};
-          const options = {
-            sort: { "sn": 1 }
-          };
-          const result = await studCollection.find(query, options).toArray();
-          res.send(result);
-      });
+  //     Batch 17
+  // ******************************  
 
-
-    //   searchbar by name 
-    // http://localhost:5000/students_16/afrin
-      app.get("/students_16/:name", async (req, res) => {
+  //   searchbar by name 
+    // http://localhost:5000/aqeedah_17/afrin
+      app.get("/aqeedah/17/:name", async (req, res) => {
         const name = req.params.name.toLowerCase();
         const query = {name : {$regex :name}};
         const options = {
             sort: { "sn": 1 }
           };
-        const result = await studCollection.find(query, options).toArray();
+        const result = await aqeedah_17_list.find(query, options).toArray();
         res.send(result);
       });
 
-      //get an id
+      //get by sn
       http://localhost:5000/student/13
-      app.get("/student/:sn", async (req, res) => {
+      app.get("/aqeedah/17/sn/:sn", async (req, res) => {
         const sn = parseInt(req.params.sn);
         const query = {sn : sn};
-        const result = await studCollection.findOne(query);
-        console.log(result)
+        const result = await aqeedah_17_list.findOne(query);
+        res.send(result);
+      });
+  
+  // ******************************
+  //     Batch 16
+  // ******************************  
+
+  //   searchbar by name 
+    // http://localhost:5000/aqeedah_16/afrin
+      app.get("/aqeedah/16/:name", async (req, res) => {
+        const name = req.params.name.toLowerCase();
+        const query = {name : {$regex :name}};
+        const options = {
+            sort: { "sn": 1 }
+          };
+        const result = await aqeedah_16_list.find(query, options).toArray();
+        res.send(result);
+      });
+      //get by sn
+      http://localhost:5000/student/13
+      app.get("/aqeedah/16/sn/:sn", async (req, res) => {
+        const sn = parseInt(req.params.sn);
+        const query = {sn : sn};
+        const result = await aqeedah_16_list.findOne(query);
         res.send(result);
       });
 
-      // insert a field 
+   
+  
+  // ******************************
+  //     Batch 15
+  // ******************************  
+
+  //   searchbar by name 
+    // http://localhost:5000/aqeedah_16/afrin
+      app.get("/aqeedah/15/:name", async (req, res) => {
+        const name = req.params.name.toLowerCase();
+        const query = {name : {$regex :name}};        
+        const result = await aqeedah_15_list.find(query).toArray();
+        console.log('Im in 15')
+        res.send(result);
+      });
+      //get by sn
       http://localhost:5000/student/13
-      app.put("/student/:sn", async (req, res) => {      
+      app.get("/aqeedah/15/sn/:sn", async (req, res) => {
         const sn = parseInt(req.params.sn);
-        const filter = {sn : sn};
-        const options = { upsert : true };
-        const updateUser = {
-          $set : req.body,
-        }    
-        const result = await studCollection.updateOne(filter, updateUser, options);      
-        res.send({ success: true, result});
+        const query = {sn : sn};
+        const result = await aqeedah_15_list.findOne(query);
+        res.send(result);
       });
 
+  // ******************************
+  //     Batch 14
+  // ******************************
 
-      // update filed 
-      http://localhost:5000/levelOne/13
-      app.put("/levelOne/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`aqeedah1data.${[0]}`] : req.body } ,
-        }    
-        const result = await studCollection.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
+  //   searchbar by name 
+    // http://localhost:5000/aqeedah_16/afrin
+      app.get("/aqeedah/14/:name", async (req, res) => {
+        const name = req.params.name.toLowerCase();
+        const query = {name : {$regex :name}};
+        const options = {
+            sort: { "sn": 1 }
+          };
+        const result = await aqeedah_14_list.find(query, options).toArray();
+        res.send(result);
       });
+      //get by sn
+      http://localhost:5000/student/13
+      app.get("/aqeedah/14/sn/:sn", async (req, res) => {
+        const sn = parseInt(req.params.sn);
+        const query = {sn : sn};
+        const result = await aqeedah_14_list.findOne(query);
+        res.send(result);
+      });
+      
+  // ******************************
+  //     create user on log in
+  // ******************************  
+
+  //   searchbar by name 
+    // http://localhost:5000/aqeedah_16/afrin
+      app.get("/allUsers", async (req, res) => {
+        const name = req.params.name.toLowerCase();
+        const query = {name : {$regex :name}};
+        const options = {
+            sort: { "sn": 1 }
+          };
+        const result = await aqeedah_14_list.find(query, options).toArray();
+        res.send(result);
+      });
+
 
       
   } finally {
