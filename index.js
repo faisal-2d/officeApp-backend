@@ -105,12 +105,8 @@ async function run() {
   //   searchbar by name 
     // http://localhost:5000/aqeedah_16/afrin
       app.get("/aqeedah/14/:name", async (req, res) => {
-        const name = req.params.name.toLowerCase();
-        if(name){
-          const query = {name : {$regex :name}};
-        }else{
-          const query = {};
-        }
+        const name = req.params.name.toLowerCase();       
+          const query = {name : {$regex :name}};       
         const options = {
             sort: { "sn": 1 }
           };
