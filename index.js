@@ -106,7 +106,11 @@ async function run() {
     // http://localhost:5000/aqeedah_16/afrin
       app.get("/aqeedah/14/:name", async (req, res) => {
         const name = req.params.name.toLowerCase();
-        const query = {name : {$regex :name}};
+        if(name){
+          const query = {name : {$regex :name}};
+        }else{
+          const query = {};
+        }
         const options = {
             sort: { "sn": 1 }
           };
@@ -121,6 +125,47 @@ async function run() {
         const result = await aqeedah_14_list.findOne(query);
         res.send(result);
       });
+
+      // merit
+      // http://localhost:5000/aqeedah_16/afrin
+      app.get("/meritlist/aqeedah/14", async (req, res) => {
+        const query = {};
+        const options = {
+            sort: { "aqeedah3Total": -1 }
+          };
+        const result = await aqeedah_14_list.find(query, options).toArray();
+        res.send(result);
+      });
+
+      // update aqeedah3Data
+       http://localhost:5000/level3/13
+       app.put("/level3/:sn", async (req, res) => {      
+         const sn = parseInt(req.params.sn);
+         const filter = {sn : sn}; 
+         const updateDocument = {
+           $set : req.body,
+          //  $set : {'aqeedah3data' : req.body } ,
+         }    
+         const result = await aqeedah_14_list.updateOne(filter, updateDocument);      
+         res.send({ success: true, result});
+       });
+
+      //  total mark
+      http://localhost:5000/level3/13
+       app.put("/level3total/:sn", async (req, res) => {      
+         const sn = parseInt(req.params.sn);
+         const filter = {sn : sn};
+         const getStud = await aqeedah_14_list.findOne(filter);
+         const updateDocument = await {
+           $set : {'aqeedah3Total' : getStud.aqeedah3data[0].Score +
+                                     getStud.aqeedah3data[1].Score + 
+                                     getStud.aqeedah3data[2].Score + 
+                                     getStud.aqeedah3data[3].Score } ,
+         }    
+         const result = await aqeedah_14_list.updateOne(filter, updateDocument);      
+         res.send({ success: true, result});
+       });
+
       
   // ******************************
   //     create user on log in
