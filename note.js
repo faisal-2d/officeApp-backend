@@ -1,3 +1,7 @@
+ 
+// node
+// require('crypto').randomBytes(64).toString('hex')
+ 
  // get all sudents
       // http://localhost:5000/batch_16
       app.get("/aqeedah_:batch", async (req, res) => {

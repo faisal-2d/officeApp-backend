@@ -15,6 +15,25 @@ app.use(express.json());
 var uri = `mongodb://${process.env.USER_NAME}:${process.env.USER_PASS}@ac-axtjn2w-shard-00-00.pk2vtjr.mongodb.net:27017,ac-axtjn2w-shard-00-01.pk2vtjr.mongodb.net:27017,ac-axtjn2w-shard-00-02.pk2vtjr.mongodb.net:27017/?ssl=true&replicaSet=atlas-1goeck-shard-0&authSource=admin&retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {  useNewUrlParser: true,  useUnifiedTopology: true,  serverApi: ServerApiVersion.v1});
 
+
+
+function verifyJWT(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    return res.status(401).send({ message: 'UnAuthorized'});
+  }
+  const token = authHeader.split(' ')[1];
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (error, decoded) {
+    if (error) {
+      return res.status(403).send({ message: 'Forbidden access' })
+    }
+    req.decoded = decoded;
+    next();
+  });
+}
+
+
+
 async function run() {
     try {
       await client.connect();
@@ -22,7 +41,61 @@ async function run() {
       const aqeedah_16_list = client.db("aqeedah_16").collection("aqeedah_16_list");     
       const aqeedah_15_list = client.db("aqeedah_16").collection("aqeedah_15_list");     
       const aqeedah_14_list = client.db("aqeedah_16").collection("aqeedah_14_list");     
-      const allUsers = client.db("users").collection("all_users");     
+      const userCollection = client.db("users").collection("all_users"); 
+
+
+      
+      
+      // *********************
+      // All Users 
+      // *********************
+
+
+      // get all users
+    // http://localhost:5000/users
+    app.get("/users", async (req, res) => {
+      const query = {};
+      const result = await userCollection.find(query).toArray();
+      res.send(result);
+  });
+
+  // create one user
+  // http://localhost:5000/user/email
+  app.put("/user/:email", async (req, res) => {
+    const email = req.params.email;
+    const filter = {email : email};
+    const options = { upsert : true };
+    const updateUser = {
+      $set : {email : email},
+    }      
+    const result = await userCollection.updateOne(filter, updateUser, options);
+    const token = jwt.sign({email : email}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+    res.send({ success: true, result, token});
+  });
+
+
+  // make an user Admin
+  // http://localhost:5000/admin/email
+  app.put("/makeadmin/:email", async (req, res) => {      
+    const email = req.params.email;
+    const filter = {email : email};
+    const options = { upsert : true };
+    const updateUser = {
+      $set : {role : 'admin'},
+    }      
+    const result = await userCollection.updateOne(filter, updateUser, options);      
+    res.send({ success: true, result});
+  });
+
+
+  // check Admin
+  // http://localhost:5000/admin/email
+  app.get("/isadmin/:email", async (req, res) => {      
+    const email = req.params.email;      
+    const user = await userCollection.findOne({email : email}); 
+    const isAdmin = user.role === 'admin';  
+    res.send({ isAdmin: isAdmin});
+  });
   
   
   // ******************************
@@ -163,21 +236,6 @@ async function run() {
        });
 
       
-  // ******************************
-  //     create user on log in
-  // ******************************  
-
-  //   searchbar by name 
-    // http://localhost:5000/aqeedah_16/afrin
-      app.get("/allUsers", async (req, res) => {
-        const name = req.params.name.toLowerCase();
-        const query = {name : {$regex :name}};
-        const options = {
-            sort: { "sn": 1 }
-          };
-        const result = await aqeedah_14_list.find(query, options).toArray();
-        res.send(result);
-      });
 
 
       
