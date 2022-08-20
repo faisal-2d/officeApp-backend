@@ -221,6 +221,18 @@ async function run() {
         res.send({ success: true, result});
       });
 
+       // update filed 
+       http://localhost:5000/levelOne/13
+       app.put("/exm2/aqeedah/16/:sn", async (req, res) => {      
+         const sn = parseInt(req.params.sn);
+         const filter = {sn : sn}; 
+         const updateDocument = {
+           $set : { [`aqeedah1data.${[1]}`] : req.body } ,
+         }    
+         const result = await aqeedah_16_list.updateOne(filter, updateDocument);      
+         res.send({ success: true, result});
+       });
+
       //  total mark
       http://localhost:5000/level3/13
        app.put("/15aqeedah3total/:sn", async (req, res) => {      
