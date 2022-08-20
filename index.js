@@ -209,7 +209,7 @@ async function run() {
         res.send(result);
       });
 
-      // update aqeedah3Data
+      // update aqeedah3Data link
       // http://localhost:5000/level3/13
       app.put("/exm2level2/:sn", async (req, res) => {      
         const sn = parseInt(req.params.sn);
