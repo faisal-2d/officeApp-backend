@@ -91,10 +91,13 @@ async function run() {
   // check Admin
   // http://localhost:5000/admin/email
   app.get("/isadmin/:email", async (req, res) => {      
-    const email = req.params.email;      
-    const user = await userCollection.findOne({email : email}); 
-    const isAdmin = user.role === 'admin';  
-    res.send({ isAdmin: isAdmin});
+    const checkEmail = req.params.email;      
+    const user = await userCollection.findOne({email : checkEmail}); 
+    if (user?.role === 'admin') {
+      res.send({ isAdmin: true});    }
+    else {
+      res.status(403).send({ message: 'forbidden' });
+    }   
   });
   
   
