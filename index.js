@@ -224,9 +224,11 @@ async function run() {
     // http://localhost:5000/aqeedah_16/afrin
       app.get("/aqeedah/15/:name", async (req, res) => {
         const name = req.params.name.toLowerCase();
-        const query = {name : {$regex :name}};        
-        const result = await aqeedah_15_list.find(query).toArray();
-        console.log('Im in 15')
+        const query = {name : {$regex :name}}; 
+        const options = {
+          sort: { "sn": 1 }
+        };       
+        const result = await aqeedah_15_list.find(query, options).toArray();
         res.send(result);
       });
       //get by sn
