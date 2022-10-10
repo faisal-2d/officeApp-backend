@@ -159,9 +159,11 @@ async function run() {
       app.put("/17aqeedah1total/:sn", async (req, res) => {      
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn};
-        const getStud = await aqeedah_16_list.findOne(filter);
+        const getStud = await aqeedah_17_list.findOne(filter);
         const updateDocument = await {  
-          $set : {'aqeedah1Total' : 0} ,
+          $set : {'aqeedah1Total' : getStud.aqeedah1data[0].Score +
+                                    getStud.aqeedah1data[1].Score + 
+                                    getStud.aqeedah1data[2].Score} ,
         }    
         const result = await aqeedah_17_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -204,6 +206,17 @@ async function run() {
 
       // update filed 
       http://localhost:5000/levelOne/13
+      app.put("/payment/aqeedah/16/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set :  req.body,
+        }    
+        const result = await aqeedah_16_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+      // update filed 
+      http://localhost:5000/levelOne/13
       app.put("/exm3/aqeedah/16/:sn", async (req, res) => {      
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
@@ -235,6 +248,17 @@ async function run() {
         const query = {};
         const options = {
             sort: { "aqeedah1Total": -1 }
+          };
+        const result = await aqeedah_16_list.find(query, options).toArray();
+        res.send(result);
+      });
+
+       // leaderboard
+      // http://localhost:5000/aqeedah_16/afrin
+      app.get("/leaderboard/aqeedah/16", async (req, res) => {
+        const query = {};
+        const options = {
+            sort: { "aqeedah3Total": -1 }
           };
         const result = await aqeedah_16_list.find(query, options).toArray();
         res.send(result);
