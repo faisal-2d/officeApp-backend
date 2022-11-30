@@ -323,7 +323,7 @@ async function run() {
 
       // promote to level2+3 
       http://localhost:5000/levelOne/13
-      app.put("/promote/aqeedah/17/:sn", async (req, res) => {      
+      app.put("/accessLevelTwo/aqeedah17/:sn", async (req, res) => {      
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
@@ -366,6 +366,16 @@ async function run() {
         const query = {};
         const options = {
             sort: { "aqeedah1Total": -1 }
+          };
+        const result = await aqeedah_17_list.find(query, options).toArray();
+        res.send(result);
+      });
+
+      // http://localhost:5000/aqeedah_16/afrin
+      app.get("/leaderboard/aqeedah3/17", async (req, res) => {
+        const query = {};
+        const options = {
+            sort: { "aqeedah3Total": -1 }
           };
         const result = await aqeedah_17_list.find(query, options).toArray();
         res.send(result);
@@ -447,7 +457,7 @@ async function run() {
 
        // leaderboard level 2
       // http://localhost:5000/aqeedah_16/afrin
-      app.get("/leaderboard/aqeedah/16", async (req, res) => {
+      app.get("/leaderboard/aqeedah3/16", async (req, res) => {
         const query = {};
         const options = {
             sort: { "aqeedah3Total": -1 }
@@ -510,7 +520,7 @@ async function run() {
 
       // leaderboard
       // http://localhost:5000/aqeedah_16/afrin
-      app.get("/leaderboard/aqeedah/15", async (req, res) => {
+      app.get("/leaderboard/aqeedah3/15", async (req, res) => {
         const query = {};
         const options = {
             sort: { "aqeedah3Total": -1 }
@@ -575,7 +585,7 @@ async function run() {
 
       // leaderboard
       // http://localhost:5000/aqeedah_16/afrin
-      app.get("/leaderboard/aqeedah/14", async (req, res) => {
+      app.get("/leaderboard/aqeedah3/14", async (req, res) => {
         const query = {};
         const options = {
             sort: { "aqeedah3Total": -1 }
