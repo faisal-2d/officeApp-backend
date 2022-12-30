@@ -376,7 +376,7 @@ async function run() {
         const options = {
             sort: { "aqeedah3Total": -1 }
           };
-        const result = await aqeedah_17_list.find({"aqeedah3payment":{$ne:null}}, options).toArray();
+        const result = await aqeedah_17_list.find({"aqeedah3data":{$ne:null}}, options).toArray();
         res.send(result);
       });
   
@@ -460,7 +460,7 @@ async function run() {
         const options = {
             sort: { "aqeedah3Total": -1 }
           };
-        const result = await aqeedah_16_list.find({"aqeedah3payment":{$ne:null}}, options).toArray();
+        const result = await aqeedah_16_list.find({"aqeedah3data":{$ne:null}}, options).toArray();
         res.send(result);
       });
 
@@ -518,12 +518,11 @@ async function run() {
 
       // leaderboard
       // http://localhost:5000/aqeedah_16/afrin
-      app.get("/leaderboard/aqeedah3/15", async (req, res) => {
-        const query = {};
+      app.get("/leaderboard/aqeedah3/15", async (req, res) => {        
         const options = {
             sort: { "aqeedah3Total": -1 }
           };
-        const result = await aqeedah_15_list.find(query, options).toArray();
+        const result = await aqeedah_15_list.find({"aqeedah3data":{$ne:null}}, options).toArray();
         res.send(result);
       });
 
