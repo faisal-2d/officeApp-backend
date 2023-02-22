@@ -259,11 +259,11 @@ async function run() {
     
       // update filed 
       http://localhost:5000/levelOne/13
-      app.put("/exm2/aqeedah/18/:sn", async (req, res) => {      
+      app.put("/exm1/aqeedah/18/:sn", async (req, res) => {      
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : { [`aqeedah1data.${[2]}`] : req.body } ,
+          $set : { [`aqeedah1data.${[0]}`] : req.body } ,
         }    
         const result = await aqeedah_18_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -271,7 +271,7 @@ async function run() {
 
       //  total mark
       http://localhost:5000/level3/13
-      app.put("/18aqeedah1total/:sn", async (req, res) => {      
+      app.put("/18aqeedah1total123/:sn", async (req, res) => {      
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn};
         const getStud = await aqeedah_18_list.findOne(filter);
@@ -339,7 +339,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : { [`aqeedah1data.${[2]}`] : req.body } ,
+          $set : { [`aqeedah3data.${[1]}`] : req.body } ,
         }    
         const result = await aqeedah_17_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -347,19 +347,34 @@ async function run() {
 
       //  total mark
       http://localhost:5000/level3/13
-      app.put("/17aqeedah1total/:sn", async (req, res) => {      
+      app.put("/17aqeedah3total/:sn", async (req, res) => {      
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn};
         const getStud = await aqeedah_17_list.findOne(filter);
         const updateDocument = await {  
-          $set : {'aqeedah1Total' : getStud.aqeedah1data[0].Score +
-                                    getStud.aqeedah1data[1].Score + 
-                                    getStud.aqeedah1data[2].Score} ,
+          $set : {'aqeedah3Total' : getStud.aqeedah3data[0].Score +
+                                    getStud.aqeedah3data[1].Score + 
+                                    getStud.aqeedah3data[2].Score + 
+                                    getStud.aqeedah3data[3].Score} ,
         }    
         const result = await aqeedah_17_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
       });
 
+      //  payment update
+      http://localhost:5000/level3/13
+      app.put("/paymentupdate17batch/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn};
+        const getStud = await aqeedah_17_list.findOne(filter);
+        const updateDocument = await {  
+          $set : {'aqeedah2payment' : getStud.aqeedah3payment} ,
+        }    
+        const result = await aqeedah_17_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});        
+      });
+
+      
       // leaderboard
       // http://localhost:5000/aqeedah_16/afrin
       app.get("/leaderboard/aqeedah1/17", async (req, res) => {
@@ -378,6 +393,18 @@ async function run() {
           };
         const result = await aqeedah_17_list.find({"aqeedah3data":{$ne:null}}, options).toArray();
         res.send(result);
+      });
+
+      // update aqeedah3Data
+      //http://localhost:5000/level3/13
+      app.put("/certificate1/aqeedah17/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : req.body,
+        }    
+        const result = await aqeedah_17_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
       });
   
   // ******************************
@@ -417,11 +444,11 @@ async function run() {
       });
       // update filed 
       http://localhost:5000/levelOne/13
-      app.put("/exm2/aqeedah2/16/:sn", async (req, res) => {      
+      app.put("/exm4/aqeedah2/16/:sn", async (req, res) => {      
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : { [`aqeedah3data.${[2]}`] : req.body } ,
+          $set : { [`aqeedah3data.${[3]}`] : req.body } ,
         }    
         const result = await aqeedah_16_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -462,6 +489,18 @@ async function run() {
           };
         const result = await aqeedah_16_list.find({"aqeedah3data":{$ne:null}}, options).toArray();
         res.send(result);
+      });
+
+       // update aqeedah3Data
+      //http://localhost:5000/level3/13
+      app.put("/certificate/aqeedah16/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : req.body,
+        }    
+        const result = await aqeedah_16_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
       });
 
    
