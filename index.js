@@ -37,6 +37,7 @@ function verifyJWT(req, res, next) {
 async function run() {
     try {
       await client.connect();
+      const aqeedah_20_list = client.db("aqeedah_16").collection("aqeedah_20_list");     
       const aqeedah_19_list = client.db("aqeedah_16").collection("aqeedah_19_list");     
       const aqeedah_18_list = client.db("aqeedah_16").collection("aqeedah_18_list");     
       const aqeedah_17_list = client.db("aqeedah_16").collection("aqeedah_17_list");     
