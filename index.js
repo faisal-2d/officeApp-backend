@@ -475,11 +475,11 @@ async function run() {
     
       // update filed 
       http://localhost:5000/levelOne/13
-      app.put("/exm1/aqeedah/19/:sn", async (req, res) => {      
+      app.put("/Level1/aqeedah/19/:sn", async (req, res) => {      
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : { [`aqeedah1data.${[0]}`] : req.body } ,
+          $set : { [`aqeedah1data.${[2]}`] : req.body } ,
         }    
         const result = await aqeedah_19_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -534,6 +534,18 @@ async function run() {
         const result = await aqeedah_19_list.find(query, options).toArray();
         res.send(result);
       });
+
+       // http://localhost:5000/aqeedah_16/afrin
+       app.get("/leaderboard/aqeedah3/19", async (req, res) => {       
+        const options = {
+            sort: { "aqeedah3Total": -1 }
+          };
+        const result = await aqeedah_19_list.find({"aqeedah3data":{$ne:null}}, options).toArray();
+        res.send(result);
+      });
+
+
+
   // ******************************
   //     Batch 18
   // ******************************  
@@ -574,7 +586,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : { [`aqeedah3data.${[0]}`] : req.body } ,
+          $set : { [`aqeedah3data.${[2]}`] : req.body } ,
         }    
         const result = await aqeedah_18_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
