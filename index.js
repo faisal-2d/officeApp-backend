@@ -514,7 +514,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : {'aqeedahCourseCertificates.level1' : req.body.level1},
+          $set : {'aqeedahCourseCertificates.level1' : req.body.certificate},
         }    
         const result = await aqeedah_20_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -524,7 +524,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : {'aqeedahCourseCertificates.level2' : req.body.level2},
+          $set : {'aqeedahCourseCertificates.level2' : req.body.certificate},
         }    
         const result = await aqeedah_20_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -534,7 +534,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : {'aqeedahCourseCertificates.level3' : req.body.level3},
+          $set : {'aqeedahCourseCertificates.level3' : req.body.certificate},
         }    
         const result = await aqeedah_20_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -692,7 +692,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : {'aqeedahCourseCertificates.level1' : req.body.level1},
+          $set : {'aqeedahCourseCertificates.level1' : req.body.certificate},
         }    
         const result = await aqeedah_19_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -702,7 +702,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : {'aqeedahCourseCertificates.level2' : req.body.level2},
+          $set : {'aqeedahCourseCertificates.level2' : req.body.certificate},
         }    
         const result = await aqeedah_19_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -712,7 +712,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : {'aqeedahCourseCertificates.level3' : req.body.level3},
+          $set : {'aqeedahCourseCertificates.level3' : req.body.certificate},
         }    
         const result = await aqeedah_19_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -899,7 +899,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : {'aqeedahCourseCertificates.level1' : req.body.level1},
+          $set : {'aqeedahCourseCertificates.level1' : req.body.certificate},
         }    
         const result = await aqeedah_18_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -909,7 +909,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : {'aqeedahCourseCertificates.level2' : req.body.level2},
+          $set : {'aqeedahCourseCertificates.level2' : req.body.certificate},
         }    
         const result = await aqeedah_18_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -919,8 +919,9 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : {'aqeedahCourseCertificates.level3' : req.body.level3},
+          $set : {'aqeedahCourseCertificates.level3' : req.body.certificate},
         }    
+        // console.log(req.body.certificate);
         const result = await aqeedah_18_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
       });
@@ -1065,18 +1066,7 @@ async function run() {
         res.send(result);
       });
 
-      // update aqeedah3Data
-      //http://localhost:5000/level3/13
-      app.put("/certificate2/aqeedah17/:sn", async (req, res) => {   
-        // console.log(req.body.level1);   
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : {'aqeedahCourseCertificates.level3' : req.body.level3},
-        }    
-        const result = await aqeedah_17_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      
   
   // ******************************
   //     Batch 16
