@@ -37,6 +37,7 @@ function verifyJWT(req, res, next) {
 async function run() {
     try {
       await client.connect();
+      const aqeedah_21_list = client.db("aqeedah_16").collection("aqeedah_21_list");     
       const aqeedah_20_list = client.db("aqeedah_16").collection("aqeedah_20_list");     
       const aqeedah_19_list = client.db("aqeedah_16").collection("aqeedah_19_list");     
       const aqeedah_18_list = client.db("aqeedah_16").collection("aqeedah_18_list");     
@@ -329,6 +330,218 @@ async function run() {
 
   
   // ******************************
+  //     Batch 21
+  // ******************************  
+
+  //get count
+      http://localhost:5000/count/aqeedah/17
+      app.get("/count/aqeedah/21", async (req, res) => {
+        const result = await aqeedah_21_list.countDocuments();
+        res.status(200).json({'success' : true, 'result': result})
+      });
+
+  //   searchbar by name 
+    // http://localhost:5000/aqeedah_17/afrin
+      app.get("/aqeedah/21/:name", async (req, res) => {
+        const name = req.params.name.toLowerCase();
+        const query = {name : {$regex :name}};
+        const options = {
+            sort: { "sn": 1 }
+          };
+        const result = await aqeedah_21_list.find(query, options).toArray();
+        res.send(result);
+      });
+
+      //get by sn
+      http://localhost:5000/student/13
+      app.get("/aqeedah/21/sn/:sn", async (req, res) => {
+        const sn = parseInt(req.params.sn);
+        const query = {sn : sn};
+        const result = await aqeedah_21_list.findOne(query);
+        res.send(result);
+      });
+
+      //create a new stud
+    // http://localhost:5000/product
+    app.post("/newAqeedahregister", async (req, res) => {
+      const stud = req.body;
+      const result = await aqeedah_21_list.insertOne(stud);
+      res.send({ success: true, result});
+    });
+
+    
+      // update filed 
+      http://localhost:5000/levelOne/13
+      app.put("/aqeedah21/level1/exm1/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : { [`aqeedah1data.${[0]}`] : req.body } ,
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+
+      app.put("/aqeedah21/level1/exm2/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : { [`aqeedah1data.${[1]}`] : req.body } ,
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+      app.put("/aqeedah21/level1/exm3/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : { [`aqeedah1data.${[2]}`] : req.body } ,
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+      app.put("/aqeedah21/level2/exm1/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : { [`aqeedah3data.${[0]}`] : req.body } ,
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+      app.put("/aqeedah21/level2/exm2/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : { [`aqeedah3data.${[1]}`] : req.body } ,
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+      app.put("/aqeedah21/level2/exm3/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : { [`aqeedah3data.${[2]}`] : req.body } ,
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+      app.put("/aqeedah21/level2/exm4/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : { [`aqeedah3data.${[3]}`] : req.body } ,
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+
+      // update filed 
+      http://localhost:5000/levelOne/13
+      app.put("/payment/aqeedah/21/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set :  req.body,
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+
+      //  total mark
+      http://localhost:5000/level3/13
+      app.put("/aqeedah21/level1/leaderboard/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn};
+        const getStud = await aqeedah_21_list.findOne(filter);
+        const updateDocument = await {  
+          $set : {'aqeedah1Total' : getStud.aqeedah1data[0].Score +
+                                    getStud.aqeedah1data[1].Score + 
+                                    getStud.aqeedah1data[2].Score} ,
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+
+      http://localhost:5000/level3/13
+      app.put("/aqeedah21/level2/leaderboard/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn};
+        const getStud = await aqeedah_21_list.findOne(filter);
+        const updateDocument = await {  
+          $set : {'aqeedah3Total' : getStud.aqeedah3data[0].Score +
+                                    getStud.aqeedah3data[1].Score + 
+                                    getStud.aqeedah3data[2].Score +
+                                    getStud.aqeedah3data[3].Score} ,
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+
+       // promote to level2+3 
+      http://localhost:5000/levelOne/13
+      app.put("/accessLevelTwo/aqeedah21/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set :  req.body,
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+
+      // leaderboard fetch
+      // http://localhost:5000/aqeedah_16/afrin
+      app.get("/leaderboard/aqeedah1/21", async (req, res) => {
+        const query = {};
+        const options = {
+            sort: { "aqeedah1Total": -1 }
+          };
+        const result = await aqeedah_21_list.find(query, options).toArray();
+        res.send(result);
+      });
+
+      app.get("/leaderboard/aqeedah3/21", async (req, res) => {       
+        const options = {
+            sort: { "aqeedah3Total": -1 }
+          };
+        const result = await aqeedah_21_list.find({"aqeedah3data":{$ne:null}}, options).toArray();
+        res.send(result);
+      });
+
+       //http://localhost:5000/level3/13
+      app.put("/aqeedah21/level1/certificate/:sn", async (req, res) => {   
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : {'aqeedahCourseCertificates.level1' : req.body.certificate},
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+
+      app.put("/aqeedah21/level2/certificate/:sn", async (req, res) => {   
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : {'aqeedahCourseCertificates.level2' : req.body.certificate},
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+
+      app.put("/aqeedah21/level3/certificate/:sn", async (req, res) => {   
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set : {'aqeedahCourseCertificates.level3' : req.body.certificate},
+        }    
+        const result = await aqeedah_21_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+
+  // ******************************
   //     Batch 20
   // ******************************  
 
@@ -362,11 +575,11 @@ async function run() {
 
       //create a new stud
     // http://localhost:5000/product
-    app.post("/newAqeedahregister", async (req, res) => {
-      const stud = req.body;
-      const result = await aqeedah_20_list.insertOne(stud);
-      res.send({ success: true, result});
-    });
+    // app.post("/newAqeedahregister", async (req, res) => {
+    //   const stud = req.body;
+    //   const result = await aqeedah_20_list.insertOne(stud);
+    //   res.send({ success: true, result});
+    // });
 
     
       // update filed 
