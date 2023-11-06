@@ -48,7 +48,7 @@ async function run() {
 
       const fiqh_1_list = client.db("fiqh").collection("fiqh_1_list");     
       const seerat_1_list = client.db("seerat").collection("seerat_1_list");     
-      const ftafseer_1_list = client.db("tafseer").collection("tafseer_1_list");     
+      const tafseer_1_list = client.db("tafseer").collection("tafseer_1_list");     
       
       
       const arabic_1_list = client.db("arabic").collection("arabic_1_list");     
