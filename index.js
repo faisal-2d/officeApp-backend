@@ -381,7 +381,7 @@ async function run() {
 
       //create a new stud
     // http://localhost:5000/product
-    app.post("/newAqeedahregister", async (req, res) => {
+    app.post("/register/aqeedah/21", async (req, res) => {
       const stud = req.body;
       const result = await aqeedah_21_list.insertOne(stud);
       res.send({ success: true, result});
@@ -593,11 +593,11 @@ async function run() {
 
       //create a new stud
     // http://localhost:5000/product
-    // app.post("/newAqeedahregister", async (req, res) => {
-    //   const stud = req.body;
-    //   const result = await aqeedah_20_list.insertOne(stud);
-    //   res.send({ success: true, result});
-    // });
+    app.post("/register/aqeedah/20", async (req, res) => {
+      const stud = req.body;
+      const result = await aqeedah_20_list.insertOne(stud);
+      res.send({ success: true, result});
+    });
 
     
       // update filed 
@@ -1599,7 +1599,7 @@ async function run() {
 
       //create a new stud
     // http://localhost:5000/product
-    app.post("/newfiqhregister", async (req, res) => {
+    app.post("/register/fiqh/1", async (req, res) => {
       const stud = req.body;
       const result = await fiqh_1_list.insertOne(stud);
       res.send({ success: true, result});
@@ -1796,9 +1796,9 @@ async function run() {
         res.send(result);
       });
 
-      //create a new stud
+       //create a new stud
     // http://localhost:5000/product
-    app.post("/newseeratregister", async (req, res) => {
+    app.post("/register/seerat/1", async (req, res) => {
       const stud = req.body;
       const result = await seerat_1_list.insertOne(stud);
       res.send({ success: true, result});
@@ -1993,9 +1993,9 @@ async function run() {
         res.send(result);
       });
 
-      //create a new stud
+       //create a new stud
     // http://localhost:5000/product
-    app.post("/newtafseerregister", async (req, res) => {
+    app.post("/register/tafseer/1", async (req, res) => {
       const stud = req.body;
       const result = await tafseer_1_list.insertOne(stud);
       res.send({ success: true, result});
