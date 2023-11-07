@@ -46,6 +46,8 @@ async function run() {
       const aqeedah_15_list = client.db("aqeedah_16").collection("aqeedah_15_list");  
       const aqeedah_14_list = client.db("aqeedah_16").collection("aqeedah_14_list");     
 
+      const fiqh_8_list = client.db("fiqh").collection("fiqh_8_list"); 
+      const fiqh_7_list = client.db("fiqh").collection("fiqh_7_list"); 
       const fiqh_1_list = client.db("fiqh").collection("fiqh_1_list"); 
 
       const seerat_1_list = client.db("seerat").collection("seerat_1_list");     
@@ -54,10 +56,11 @@ async function run() {
       const tafseer_1_list = client.db("tafseer").collection("tafseer_1_list");     
       const tafseer_6_list = client.db("tafseer").collection("tafseer_6_list");     
       
-      const arabic_1_list = client.db("arabic").collection("arabic_1_list");     
-      const arabic_2_list = client.db("arabic").collection("arabic_2_list");     
+      const arabic_4_list = client.db("arabic").collection("arabic_4_list");  
       const arabic_3_list = client.db("arabic").collection("arabic_3_list");     
-      const arabic_4_list = client.db("arabic").collection("arabic_4_list");     
+      const arabic_2_list = client.db("arabic").collection("arabic_2_list");     
+      const arabic_1_list = client.db("arabic").collection("arabic_1_list");     
+
       const userCollection = client.db("users").collection("all_users"); 
 
 
