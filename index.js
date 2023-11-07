@@ -1612,7 +1612,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : { [`fiah1data.${[0]}`] : req.body } ,
+          $set : { [`fiqh1data.${[0]}`] : req.body } ,
         }    
         const result = await fiqh_1_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -1811,7 +1811,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : { [`fiah1data.${[0]}`] : req.body } ,
+          $set : { [`seerat1data.${[0]}`] : req.body } ,
         }    
         const result = await seerat_1_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
@@ -2008,7 +2008,7 @@ async function run() {
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn}; 
         const updateDocument = {
-          $set : { [`fiah1data.${[0]}`] : req.body } ,
+          $set : { [`tafseer1data.${[0]}`] : req.body } ,
         }    
         const result = await tafseer_1_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
