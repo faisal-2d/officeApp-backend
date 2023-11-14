@@ -3158,7 +3158,10 @@ async function run() {
     // http://localhost:5000/users
     app.get("/scholarship/aqeedah", async (req, res) => {
       const query = {};
-      const result = await aqeedahScholarship_list.find(query).toArray();
+      const options = {
+            sort: { "sn": 1 }
+          };
+      const result = await aqeedahScholarship_list.find(query, options).toArray();
       res.send(result);
       });
 
