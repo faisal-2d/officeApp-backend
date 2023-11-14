@@ -2160,8 +2160,10 @@ async function run() {
       });
 
 
+
+
       // ****************************
-      //    seerat -  Batch 4
+      //    seerat 4 -  Batch 21
       // ******************************  
 
       //get count
@@ -2213,53 +2215,53 @@ async function run() {
         res.send({ success: true, result});
       });
 
-      app.put("/seerat4/level1/exm2/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat1data.${[1]}`] : req.body } ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-      app.put("/seerat4/level1/exm3/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat1data.${[2]}`] : req.body } ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      // app.put("/seerat4/level1/exm2/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set : { [`seerat1data.${[1]}`] : req.body } ,
+      //   }    
+      //   const result = await seerat_4_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
+      // app.put("/seerat4/level1/exm3/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set : { [`seerat1data.${[2]}`] : req.body } ,
+      //   }    
+      //   const result = await seerat_4_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
 
-      app.put("/seerat4/level2/exm1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat2data.${[0]}`] : req.body } ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      // app.put("/seerat4/level2/exm1/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set : { [`seerat2data.${[0]}`] : req.body } ,
+      //   }    
+      //   const result = await seerat_4_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
       
-      app.put("/seerat4/level2/exm2/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat2data.${[1]}`] : req.body } ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-      app.put("/seerat4/level2/exm3/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat2data.${[2]}`] : req.body } ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      // app.put("/seerat4/level2/exm2/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set : { [`seerat2data.${[1]}`] : req.body } ,
+      //   }    
+      //   const result = await seerat_4_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
+      // app.put("/seerat4/level2/exm3/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set : { [`seerat2data.${[2]}`] : req.body } ,
+      //   }    
+      //   const result = await seerat_4_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
 
 
       // update filed 
@@ -2275,45 +2277,46 @@ async function run() {
       });
 
       //  total mark
-      http://localhost:5000/level3/13
+      // http://localhost:5000/level3/13
       app.put("/seerat4/level1/leaderboard/:sn", async (req, res) => {      
         const sn = parseInt(req.params.sn);
         const filter = {sn : sn};
         const getStud = await seerat_4_list.findOne(filter);
         const updateDocument = await {  
-          $set : {'seerat1Total' : getStud.seerat1data[0].Score +
-                                    getStud.seerat1data[1].Score + 
-                                    getStud.seerat1data[2].Score} ,
+          $set : {'seerat1Total' : getStud.seerat1data[0].Score},
+          //  +
+          //                           getStud.seerat1data[1].Score + 
+          //                           getStud.seerat1data[2].Score} ,
         }    
         const result = await seerat_4_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
       });
 
-      http://localhost:5000/level3/13
-      app.put("/seerat4/level2/leaderboard/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn};
-        const getStud = await seerat_4_list.findOne(filter);
-        const updateDocument = await {  
-          $set : {'seerat2Total' : getStud.seerat2data[0].Score +
-                                    getStud.seerat2data[1].Score + 
-                                    getStud.seerat2data[2].Score} ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      // http://localhost:5000/level3/13
+      // app.put("/seerat4/level2/leaderboard/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn};
+      //   const getStud = await seerat_4_list.findOne(filter);
+      //   const updateDocument = await {  
+      //     $set : {'seerat2Total' : getStud.seerat2data[0].Score +
+      //                               getStud.seerat2data[1].Score + 
+      //                               getStud.seerat2data[2].Score} ,
+      //   }    
+      //   const result = await seerat_4_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
 
       // promote to level2+3 
-      http://localhost:5000/levelOne/13
-      app.put("/accessLevelTwo/seerat4/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set :  req.body,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      // http://localhost:5000/levelOne/13
+      // app.put("/accessLevelTwo/seerat4/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set :  req.body,
+      //   }    
+      //   const result = await seerat_4_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
 
       // leaderboard fetch
       // http://localhost:5000/seerat_16/afrin
@@ -2326,13 +2329,13 @@ async function run() {
         res.send(result);
       });
 
-      app.get("/leaderboard/seerat2/4", async (req, res) => {       
-        const options = {
-            sort: { "seerat2Total": -1 }
-          };
-        const result = await seerat_4_list.find({"seerat2data":{$ne:null}}, options).toArray();
-        res.send(result);
-      });
+      // app.get("/leaderboard/seerat2/4", async (req, res) => {       
+      //   const options = {
+      //       sort: { "seerat2Total": -1 }
+      //     };
+      //   const result = await seerat_4_list.find({"seerat2data":{$ne:null}}, options).toArray();
+      //   res.send(result);
+      // });
 
       //http://localhost:5000/level3/13
       app.put("/seerat4/level1/certificate/:sn", async (req, res) => {   
@@ -2345,414 +2348,24 @@ async function run() {
         res.send({ success: true, result});
       });
 
-      app.put("/seerat4/level2/certificate/:sn", async (req, res) => {   
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : {'seeratCourseCertificates.level2' : req.body.certificate},
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      // app.put("/seerat4/level2/certificate/:sn", async (req, res) => {   
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set : {'seeratCourseCertificates.level2' : req.body.certificate},
+      //   }    
+      //   const result = await seerat_4_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
 
 
 
-      // ****************************
-      //    seerat 1 -  Batch 21
-      // ******************************  
-
-      //get count
-      http://localhost:5000/count/seerat/47
-      app.get("/count/seerat/4", async (req, res) => {
-        const result = await seerat_4_list.countDocuments();
-        res.status(200).json({'success' : true, 'result': result})
-      });
-
-    //   searchbar by name 
-    // http://localhost:5000/seerat_17/afrin
-      app.get("/seerat/4/:name", async (req, res) => {
-        const name = req.params.name.toLowerCase();
-        const query = {name : {$regex :name}};
-        const options = {
-            sort: { "sn": 1 }
-          };
-        const result = await seerat_4_list.find(query, options).toArray();
-        res.send(result);
-      });
-
-      //get by sn
-      http://localhost:5000/student/13
-      app.get("/seerat/4/sn/:sn", async (req, res) => {
-        const sn = parseInt(req.params.sn);
-        const query = {sn : sn};
-        const result = await seerat_4_list.findOne(query);
-        res.send(result);
-      });
-
-       //create a new stud
-    // http://localhost:5000/product
-    app.post("/register/seerat/4", async (req, res) => {
-      const stud = req.body;
-      const result = await seerat_4_list.insertOne(stud);
-      res.send({ success: true, result});
-    });
-
-
-      // update filed 
-      http://localhost:5000/levelOne/13
-      app.put("/seerat4/level1/exm1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat1data.${[0]}`] : req.body } ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      app.put("/seerat4/level1/exm2/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat1data.${[1]}`] : req.body } ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-      app.put("/seerat4/level1/exm3/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat1data.${[2]}`] : req.body } ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      app.put("/seerat4/level2/exm1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat2data.${[0]}`] : req.body } ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
       
-      app.put("/seerat4/level2/exm2/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat2data.${[1]}`] : req.body } ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-      app.put("/seerat4/level2/exm3/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat2data.${[2]}`] : req.body } ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-
-      // update filed 
-      http://localhost:5000/levelOne/13
-      app.put("/payment/seerat/4/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set :  req.body,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      //  total mark
-      http://localhost:5000/level3/13
-      app.put("/seerat4/level1/leaderboard/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn};
-        const getStud = await seerat_4_list.findOne(filter);
-        const updateDocument = await {  
-          $set : {'seerat1Total' : getStud.seerat1data[0].Score +
-                                    getStud.seerat1data[1].Score + 
-                                    getStud.seerat1data[2].Score} ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      http://localhost:5000/level3/13
-      app.put("/seerat4/level2/leaderboard/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn};
-        const getStud = await seerat_4_list.findOne(filter);
-        const updateDocument = await {  
-          $set : {'seerat2Total' : getStud.seerat2data[0].Score +
-                                    getStud.seerat2data[1].Score + 
-                                    getStud.seerat2data[2].Score} ,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      // promote to level2+3 
-      http://localhost:5000/levelOne/13
-      app.put("/accessLevelTwo/seerat4/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set :  req.body,
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      // leaderboard fetch
-      // http://localhost:5000/seerat_16/afrin
-      app.get("/leaderboard/seerat1/4", async (req, res) => {
-        const query = {};
-        const options = {
-            sort: { "seerat1Total": -1 }
-          };
-        const result = await seerat_4_list.find(query, options).toArray();
-        res.send(result);
-      });
-
-      app.get("/leaderboard/seerat2/4", async (req, res) => {       
-        const options = {
-            sort: { "seerat2Total": -1 }
-          };
-        const result = await seerat_4_list.find({"seerat2data":{$ne:null}}, options).toArray();
-        res.send(result);
-      });
-
-      //http://localhost:5000/level3/13
-      app.put("/seerat4/level1/certificate/:sn", async (req, res) => {   
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : {'seeratCourseCertificates.level1' : req.body.certificate},
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      app.put("/seerat4/level2/certificate/:sn", async (req, res) => {   
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : {'seeratCourseCertificates.level2' : req.body.certificate},
-        }    
-        const result = await seerat_4_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
 
 
 
       // ****************************
-      //    seerat 1 -  Batch 21
-      // ******************************  
-
-      //get count
-      http://localhost:5000/count/seerat/17
-      app.get("/count/seerat/1", async (req, res) => {
-        const result = await seerat_1_list.countDocuments();
-        res.status(200).json({'success' : true, 'result': result})
-      });
-
-    //   searchbar by name 
-    // http://localhost:5000/seerat_17/afrin
-      app.get("/seerat/1/:name", async (req, res) => {
-        const name = req.params.name.toLowerCase();
-        const query = {name : {$regex :name}};
-        const options = {
-            sort: { "sn": 1 }
-          };
-        const result = await seerat_1_list.find(query, options).toArray();
-        res.send(result);
-      });
-
-      //get by sn
-      http://localhost:5000/student/13
-      app.get("/seerat/1/sn/:sn", async (req, res) => {
-        const sn = parseInt(req.params.sn);
-        const query = {sn : sn};
-        const result = await seerat_1_list.findOne(query);
-        res.send(result);
-      });
-
-       //create a new stud
-    // http://localhost:5000/product
-    app.post("/register/seerat/1", async (req, res) => {
-      const stud = req.body;
-      const result = await seerat_1_list.insertOne(stud);
-      res.send({ success: true, result});
-    });
-
-
-      // update filed 
-      http://localhost:5000/levelOne/13
-      app.put("/seerat1/level1/exm1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat1data.${[0]}`] : req.body } ,
-        }    
-        const result = await seerat_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      app.put("/seerat1/level1/exm2/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat1data.${[1]}`] : req.body } ,
-        }    
-        const result = await seerat_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-      app.put("/seerat1/level1/exm3/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat1data.${[2]}`] : req.body } ,
-        }    
-        const result = await seerat_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      app.put("/seerat1/level2/exm1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat2data.${[0]}`] : req.body } ,
-        }    
-        const result = await seerat_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-      
-      app.put("/seerat1/level2/exm2/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat2data.${[1]}`] : req.body } ,
-        }    
-        const result = await seerat_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-      app.put("/seerat1/level2/exm3/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`seerat2data.${[2]}`] : req.body } ,
-        }    
-        const result = await seerat_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-
-      // update filed 
-      http://localhost:5000/levelOne/13
-      app.put("/payment/seerat/1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set :  req.body,
-        }    
-        const result = await seerat_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      //  total mark
-      http://localhost:5000/level3/13
-      app.put("/seerat1/level1/leaderboard/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn};
-        const getStud = await seerat_1_list.findOne(filter);
-        const updateDocument = await {  
-          $set : {'seerat1Total' : getStud.seerat1data[0].Score +
-                                    getStud.seerat1data[1].Score + 
-                                    getStud.seerat1data[2].Score} ,
-        }    
-        const result = await seerat_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      http://localhost:5000/level3/13
-      app.put("/seerat1/level2/leaderboard/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn};
-        const getStud = await seerat_1_list.findOne(filter);
-        const updateDocument = await {  
-          $set : {'seerat2Total' : getStud.seerat2data[0].Score +
-                                    getStud.seerat2data[1].Score + 
-                                    getStud.seerat2data[2].Score} ,
-        }    
-        const result = await seerat_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      // promote to level2+3 
-      http://localhost:5000/levelOne/13
-      app.put("/accessLevelTwo/seerat1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set :  req.body,
-        }    
-        const result = await seerat_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      // leaderboard fetch
-      // http://localhost:5000/seerat_16/afrin
-      app.get("/leaderboard/seerat1/1", async (req, res) => {
-        const query = {};
-        const options = {
-            sort: { "seerat1Total": -1 }
-          };
-        const result = await seerat_1_list.find(query, options).toArray();
-        res.send(result);
-      });
-
-      app.get("/leaderboard/seerat2/1", async (req, res) => {       
-        const options = {
-            sort: { "seerat2Total": -1 }
-          };
-        const result = await seerat_1_list.find({"seerat2data":{$ne:null}}, options).toArray();
-        res.send(result);
-      });
-
-      //http://localhost:5000/level3/13
-      app.put("/seerat1/level1/certificate/:sn", async (req, res) => {   
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : {'seeratCourseCertificates.level1' : req.body.certificate},
-        }    
-        const result = await seerat_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      app.put("/seerat1/level2/certificate/:sn", async (req, res) => {   
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : {'seeratCourseCertificates.level2' : req.body.certificate},
-        }    
-        const result = await seerat_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-
-
-      // ****************************
-      //    tafseer 1 -  Batch 21
+      //    tafseer 6 -  Batch 21
       // ******************************  
 
       //get count
@@ -2804,53 +2417,53 @@ async function run() {
         res.send({ success: true, result});
       });
 
-      app.put("/tafseer6/level1/exm2/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`tafseer1data.${[1]}`] : req.body } ,
-        }    
-        const result = await tafseer_6_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-      app.put("/tafseer6/level1/exm3/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`tafseer1data.${[2]}`] : req.body } ,
-        }    
-        const result = await tafseer_6_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      // app.put("/tafseer6/level1/exm2/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set : { [`tafseer1data.${[1]}`] : req.body } ,
+      //   }    
+      //   const result = await tafseer_6_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
+      // app.put("/tafseer6/level1/exm3/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set : { [`tafseer1data.${[2]}`] : req.body } ,
+      //   }    
+      //   const result = await tafseer_6_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
 
-      app.put("/tafseer6/level2/exm1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`tafseer2data.${[0]}`] : req.body } ,
-        }    
-        const result = await tafseer_6_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      // app.put("/tafseer6/level2/exm1/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set : { [`tafseer2data.${[0]}`] : req.body } ,
+      //   }    
+      //   const result = await tafseer_6_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
       
-      app.put("/tafseer6/level2/exm2/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`tafseer2data.${[1]}`] : req.body } ,
-        }    
-        const result = await tafseer_6_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-      app.put("/tafseer6/level2/exm3/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`tafseer2data.${[2]}`] : req.body } ,
-        }    
-        const result = await tafseer_6_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      // app.put("/tafseer6/level2/exm2/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set : { [`tafseer2data.${[1]}`] : req.body } ,
+      //   }    
+      //   const result = await tafseer_6_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
+      // app.put("/tafseer6/level2/exm3/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set : { [`tafseer2data.${[2]}`] : req.body } ,
+      //   }    
+      //   const result = await tafseer_6_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
 
 
       // update filed 
@@ -2872,39 +2485,40 @@ async function run() {
         const filter = {sn : sn};
         const getStud = await tafseer_6_list.findOne(filter);
         const updateDocument = await {  
-          $set : {'tafseer1Total' : getStud.tafseer1data[0].Score +
-                                    getStud.tafseer1data[1].Score + 
-                                    getStud.tafseer1data[2].Score} ,
+          $set : {'tafseer1Total' : getStud.tafseer1data[0].Score},
+          //  +
+          //                           getStud.tafseer1data[1].Score + 
+          //                           getStud.tafseer1data[2].Score} ,
         }    
         const result = await tafseer_6_list.updateOne(filter, updateDocument);      
         res.send({ success: true, result});
       });
 
-      http://localhost:5000/level3/13
-      app.put("/tafseer6/level2/leaderboard/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn};
-        const getStud = await tafseer_6_list.findOne(filter);
-        const updateDocument = await {  
-          $set : {'tafseer2Total' : getStud.tafseer2data[0].Score +
-                                    getStud.tafseer2data[1].Score + 
-                                    getStud.tafseer2data[2].Score} ,
-        }    
-        const result = await tafseer_6_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      // http://localhost:5000/level3/13
+      // app.put("/tafseer6/level2/leaderboard/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn};
+      //   const getStud = await tafseer_6_list.findOne(filter);
+      //   const updateDocument = await {  
+      //     $set : {'tafseer2Total' : getStud.tafseer2data[0].Score +
+      //                               getStud.tafseer2data[1].Score + 
+      //                               getStud.tafseer2data[2].Score} ,
+      //   }    
+      //   const result = await tafseer_6_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
 
       // promote to level2+3 
       http://localhost:5000/levelOne/13
-      app.put("/accessLevelTwo/tafseer1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set :  req.body,
-        }    
-        const result = await tafseer_6_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      // app.put("/accessLevelTwo/tafseer1/:sn", async (req, res) => {      
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set :  req.body,
+      //   }    
+      //   const result = await tafseer_6_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
 
       // leaderboard fetch
       // http://localhost:5000/tafseer_16/afrin
@@ -2917,13 +2531,13 @@ async function run() {
         res.send(result);
       });
 
-      app.get("/leaderboard/tafseer2/6", async (req, res) => {       
-        const options = {
-            sort: { "tafseer2Total": -1 }
-          };
-        const result = await tafseer_6_list.find({"tafseer2data":{$ne:null}}, options).toArray();
-        res.send(result);
-      });
+      // app.get("/leaderboard/tafseer2/6", async (req, res) => {       
+      //   const options = {
+      //       sort: { "tafseer2Total": -1 }
+      //     };
+      //   const result = await tafseer_6_list.find({"tafseer2data":{$ne:null}}, options).toArray();
+      //   res.send(result);
+      // });
 
       //http://localhost:5000/level3/13
       app.put("/tafseer6/level1/certificate/:sn", async (req, res) => {   
@@ -2936,211 +2550,16 @@ async function run() {
         res.send({ success: true, result});
       });
 
-      app.put("/tafseer6/level2/certificate/:sn", async (req, res) => {   
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : {'tafseerCourseCertificates.level2' : req.body.certificate},
-        }    
-        const result = await tafseer_6_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-
-      // ****************************
-      //    tafseer 1 -  Batch 21
-      // ******************************  
-
-      //get count
-      http://localhost:5000/count/tafseer/17
-      app.get("/count/tafseer/1", async (req, res) => {
-        const result = await tafseer_1_list.countDocuments();
-        res.status(200).json({'success' : true, 'result': result})
-      });
-
-    //   searchbar by name 
-    // http://localhost:5000/tafseer_17/afrin
-      app.get("/tafseer/1/:name", async (req, res) => {
-        const name = req.params.name.toLowerCase();
-        const query = {name : {$regex :name}};
-        const options = {
-            sort: { "sn": 1 }
-          };
-        const result = await tafseer_1_list.find(query, options).toArray();
-        res.send(result);
-      });
-
-      //get by sn
-      http://localhost:5000/student/13
-      app.get("/tafseer/1/sn/:sn", async (req, res) => {
-        const sn = parseInt(req.params.sn);
-        const query = {sn : sn};
-        const result = await tafseer_1_list.findOne(query);
-        res.send(result);
-      });
-
-       //create a new stud
-    // http://localhost:5000/product
-    app.post("/register/tafseer/1", async (req, res) => {
-      const stud = req.body;
-      const result = await tafseer_1_list.insertOne(stud);
-      res.send({ success: true, result});
-    });
-
-
-      // update filed 
-      http://localhost:5000/levelOne/13
-      app.put("/tafseer1/level1/exm1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`tafseer1data.${[0]}`] : req.body } ,
-        }    
-        const result = await tafseer_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      app.put("/tafseer1/level1/exm2/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`tafseer1data.${[1]}`] : req.body } ,
-        }    
-        const result = await tafseer_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-      app.put("/tafseer1/level1/exm3/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`tafseer1data.${[2]}`] : req.body } ,
-        }    
-        const result = await tafseer_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      app.put("/tafseer1/level2/exm1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`tafseer2data.${[0]}`] : req.body } ,
-        }    
-        const result = await tafseer_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
+      // app.put("/tafseer6/level2/certificate/:sn", async (req, res) => {   
+      //   const sn = parseInt(req.params.sn);
+      //   const filter = {sn : sn}; 
+      //   const updateDocument = {
+      //     $set : {'tafseerCourseCertificates.level2' : req.body.certificate},
+      //   }    
+      //   const result = await tafseer_6_list.updateOne(filter, updateDocument);      
+      //   res.send({ success: true, result});
+      // });
       
-      app.put("/tafseer1/level2/exm2/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`tafseer2data.${[1]}`] : req.body } ,
-        }    
-        const result = await tafseer_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-      app.put("/tafseer1/level2/exm3/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : { [`tafseer2data.${[2]}`] : req.body } ,
-        }    
-        const result = await tafseer_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-
-      // update filed 
-      http://localhost:5000/levelOne/13
-      app.put("/payment/tafseer/1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set :  req.body,
-        }    
-        const result = await tafseer_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      //  total mark
-      http://localhost:5000/level3/13
-      app.put("/tafseer1/level1/leaderboard/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn};
-        const getStud = await tafseer_1_list.findOne(filter);
-        const updateDocument = await {  
-          $set : {'tafseer1Total' : getStud.tafseer1data[0].Score +
-                                    getStud.tafseer1data[1].Score + 
-                                    getStud.tafseer1data[2].Score} ,
-        }    
-        const result = await tafseer_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      http://localhost:5000/level3/13
-      app.put("/tafseer1/level2/leaderboard/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn};
-        const getStud = await tafseer_1_list.findOne(filter);
-        const updateDocument = await {  
-          $set : {'tafseer2Total' : getStud.tafseer2data[0].Score +
-                                    getStud.tafseer2data[1].Score + 
-                                    getStud.tafseer2data[2].Score} ,
-        }    
-        const result = await tafseer_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      // promote to level2+3 
-      http://localhost:5000/levelOne/13
-      app.put("/accessLevelTwo/tafseer1/:sn", async (req, res) => {      
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set :  req.body,
-        }    
-        const result = await tafseer_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      // leaderboard fetch
-      // http://localhost:5000/tafseer_16/afrin
-      app.get("/leaderboard/tafseer1/1", async (req, res) => {
-        const query = {};
-        const options = {
-            sort: { "tafseer1Total": -1 }
-          };
-        const result = await tafseer_1_list.find(query, options).toArray();
-        res.send(result);
-      });
-
-      app.get("/leaderboard/tafseer2/1", async (req, res) => {       
-        const options = {
-            sort: { "tafseer2Total": -1 }
-          };
-        const result = await tafseer_1_list.find({"tafseer2data":{$ne:null}}, options).toArray();
-        res.send(result);
-      });
-
-      //http://localhost:5000/level3/13
-      app.put("/tafseer1/level1/certificate/:sn", async (req, res) => {   
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : {'tafseerCourseCertificates.level1' : req.body.certificate},
-        }    
-        const result = await tafseer_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
-
-      app.put("/tafseer1/level2/certificate/:sn", async (req, res) => {   
-        const sn = parseInt(req.params.sn);
-        const filter = {sn : sn}; 
-        const updateDocument = {
-          $set : {'tafseerCourseCertificates.level2' : req.body.certificate},
-        }    
-        const result = await tafseer_1_list.updateOne(filter, updateDocument);      
-        res.send({ success: true, result});
-      });
      
 
 
