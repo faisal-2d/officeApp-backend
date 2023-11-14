@@ -59,7 +59,9 @@ async function run() {
       const arabic_4_list = client.db("arabic").collection("arabic_4_list");  
       const arabic_3_list = client.db("arabic").collection("arabic_3_list");     
       const arabic_2_list = client.db("arabic").collection("arabic_2_list");     
-      const arabic_1_list = client.db("arabic").collection("arabic_1_list");     
+      const arabic_1_list = client.db("arabic").collection("arabic_1_list");    
+
+      const aqeedahScholarship_list = client.db("scholarship").collection("aqeedah_shcholaship_list"); 
 
       const userCollection = client.db("users").collection("all_users"); 
 
@@ -122,10 +124,10 @@ async function run() {
 
   // check Admin
   // http://localhost:5000/admin/email
-  app.get("/ismodrator/:email", async (req, res) => {      
+  app.get("/ismoderator/:email", async (req, res) => {      
     const checkEmail = req.params.email;      
     const user = await userCollection.findOne({email : checkEmail}); 
-    if (user?.role === 'moderator') {
+    if (user?.role2 === 'moderator') {
       res.send({ isModerator: true});    }
     else {
       res.status(403).send({ message: 'forbidden' });
@@ -3141,7 +3143,52 @@ async function run() {
       });
      
 
-      
+
+      // **************************************
+      // Scholarship list
+      // **************************************
+
+      app.post("/register/scholarship/aqeedah", async (req, res) => {
+        const stud = req.body;
+        const result = await aqeedahScholarship_list.insertOne(stud);
+        res.send({ success: true, result});
+      });
+
+
+    // http://localhost:5000/users
+    app.get("/scholarship/aqeedah", async (req, res) => {
+      const query = {};
+      const result = await aqeedahScholarship_list.find(query).toArray();
+      res.send(result);
+      });
+
+      app.get("/scholarship/aqeedah/:sn", async (req, res) => {
+        const sn = parseInt(req.params.sn);
+        const query = {sn : sn};
+        const result = await aqeedahScholarship_list.findOne(query);
+        res.send(result);
+      });
+
+      app.put("/update/scholarship/aqeedah/:sn", async (req, res) => {      
+        const sn = parseInt(req.params.sn);
+        const filter = {sn : sn}; 
+        const updateDocument = {
+          $set :  req.body,
+        }    
+        const result = await aqeedahScholarship_list.updateOne(filter, updateDocument);      
+        res.send({ success: true, result});
+      });
+
+    // app.get("/scholarship/aqeedah/:name", async (req, res) => {
+    //     const name = req.params.name.toLowerCase();
+    //     const query = {name : {$regex :name}};
+    //     const options = {
+    //         sort: { "name": 1 }
+    //       };
+    //   const result = await aqeedahScholarship_list.find(query, options).toArray();
+    //   res.send(result);
+    //   });
+           
 
 
       
