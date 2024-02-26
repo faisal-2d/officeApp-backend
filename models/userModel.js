@@ -8,9 +8,13 @@ async function createUser(name, email) {
     return users.insertOne({ name, email });
 }
 async function getUsers() {
+    const query = {}; 
+    const options = {
+        sort: { "sn": 1 }
+     };
     const db = await connectDB("users");
     const users = db.collection('all_users');
-    const usersArray = await users.find().toArray();    
+    const usersArray = await users.find(query, options).toArray();    
     return usersArray;
 }
 async function getUser(name) {
@@ -38,7 +42,7 @@ async function getModerator(email) {
     const db = await connectDB("users");
     const users = db.collection('all_users');
     const user = await users.findOne(query);
-    if (user?.role === 'moderator') {
+    if (user?.role2 === 'moderator') {
         return { isAdmin: true};    
       }
     else {
@@ -51,7 +55,7 @@ async function getAssitant(email) {
     const db = await connectDB("users");
     const users = db.collection('all_users');
     const user = await users.findOne(query);
-    if (user?.role === 'assistant') {
+    if (user?.role3 === 'assistant') {
         return { isAdmin: true};    
       }
     else {

@@ -9,9 +9,13 @@ async function registerStudent(student, batch_no) {
     return result;
 }
 async function getStudents(batch_no) {
+    const query = {}; 
+    const options = {
+        sort: { "sn": 1 }
+     };
     const db = await connectDB("arabic");
     const users = db.collection(`arabic_${batch_no}_list`);
-    const usersArray = await users.find().toArray();    
+    const usersArray = await users.find(query, options).toArray();    
     return usersArray;
 }
 async function getStudentByName(batch_no, name) {
