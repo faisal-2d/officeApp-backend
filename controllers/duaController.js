@@ -96,22 +96,50 @@ async function updatePayment(req, res) {
         res.status(500).send('Internal Server Error');
     }
 }
-// async function updateGems(req, res) {
-//     const batch_no = req.params.batch;
-//     const sn = parseInt(req.params.sn);
-//     const gems_info = req.body;
+async function updateGems(req, res) {
+    const batch_no = req.params.batch;
+    const sn = parseInt(req.params.sn);
+    const info = req.body;
 
-//     console.log(sn);
-//     console.log(batch_no);
-//     console.log(gems_info);
-//     try {
-//         const result = await duaModel.updateGems(batch_no, sn, gems_info);
-//         res.status(200).send({'sn': sn ,'success' : true, 'result': result})
-//     } catch (error) {
-//         console.error('Error creating user:', error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// }
+    console.log(sn);
+    console.log(batch_no);
+    console.log(info);
+    try {
+        const result = await duaModel.updateGems(batch_no, sn, info);
+        res.status(200).send({'sn': sn ,'success' : true, 'result': result})
+    } catch (error) {
+        console.error('Error creating user:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}
+async function updateCompletion(req, res) {
+    const batch_no = req.params.batch;
+    const sn = parseInt(req.params.sn);
+
+    try {
+        const result = await duaModel.updateCompletion(batch_no, sn);
+        res.status(200).send({'sn': sn ,'success' : true, 'result': result})
+    } catch (error) {
+        console.error('Error creating user:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}
+async function updateDate(req, res) {
+    const batch_no = req.params.batch;
+    const sn = parseInt(req.params.sn);
+    const date_info = req.body;
+
+    console.log(sn);
+    console.log(batch_no);
+    console.log(gems_info);
+    try {
+        const result = await duaModel.updateGems(batch_no, sn, date_info);
+        res.status(200).send({'sn': sn ,'success' : true, 'result': result})
+    } catch (error) {
+        console.error('Error creating user:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}
 
 
 async function certificateUpload(req, res) {
@@ -132,4 +160,4 @@ async function certificateUpload(req, res) {
     }
 }
 
-module.exports = { registerStudent, getStudents, getStudentByName, getStudentById, getTotalStudents, updateDua, updateReport, updatePayment, certificateUpload };
+module.exports = { registerStudent, getStudents, getStudentByName, getStudentById, getTotalStudents, updateDua, updateReport, updateGems, updateDate, updatePayment, certificateUpload, updateCompletion };

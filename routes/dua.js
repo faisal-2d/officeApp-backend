@@ -23,7 +23,9 @@ router.put('/report_update/:batch/:sn', duaController.updateReport)
 
 
 //gems update
-// router.put('/gems/update/:batch/:sn', duaController.updateGems)
+router.put('/date/update/:batch/:sn', duaController.updateDate)
+router.put('/gems/update/:batch/:sn', duaController.updateGems)
+router.put('/completion/update/:batch/:sn', duaController.updateGems)
 
 
 //certificate
