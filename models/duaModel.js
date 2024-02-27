@@ -47,20 +47,14 @@ async function updateDate(batch_no, sn, info){
     
     const db = await connectDB("dua");
     const users = db.collection(`dua_${batch_no}_list`);
-    const student = await users.findOne(filter);
-    const student_date = student.todaysinfo.date;
-
     // reset 
-    if(student_date < date ){
     const updateDocument = await {
           $set: {   [`todaysinfo.date`] : date,
                     [`todaysinfo.dua`] : 0,
-                    [`todaysinfo.teaching`] : 0
-        }, 
-    };
+                    [`todaysinfo.teaching`] : 0 }
+        }
     const result = await users.updateOne(filter, updateDocument);      
     return result;
-    }
 }
 async function updateDua(batch_no, sn, info) {
     const filter = {sn : sn}; 
