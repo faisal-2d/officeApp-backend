@@ -117,13 +117,12 @@ async function updateCompletion(batch_no, sn) {
     const getStud = await users.findOne(filter);
 
     let totalScore = 0;
-    for (const data of getStud[dua]) {
-      totalScore += data.Score;
+    for (const data of getStud[`dua`]) {
+      totalScore += data;
     }
-  
     // Construct the update document
     const updateDocument = await {
-      $set: { [completion] : totalScore },
+      $set: { [`completion`] : totalScore },
     };  
     const result = await users.updateOne(filter, updateDocument);  
     return result;    
