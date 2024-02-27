@@ -129,7 +129,7 @@ async function updateDate(req, res) {
 
    
     try {
-        const result = await duaModel.updateGems(batch_no, sn, info);
+        const result = await duaModel.updateDate(batch_no, sn, info);
         res.status(200).send({'sn': sn ,'success' : true, 'result': result})
     } catch (error) {
         console.error('Error creating user:', error);
