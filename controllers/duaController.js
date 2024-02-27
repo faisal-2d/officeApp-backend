@@ -4,7 +4,7 @@ const duaModel = require('../models/duaModel');
 async function registerStudent(req, res) {
     const batch_no = req.params.batch;
     const student = req.body;
-    console.log(student, batch_no);
+   
     try {
         await duaModel.registerStudent(student, batch_no);
         res.status(201).send('Student registered successfully');
@@ -101,9 +101,7 @@ async function updateGems(req, res) {
     const sn = parseInt(req.params.sn);
     const info = req.body;
 
-    console.log(sn);
-    console.log(batch_no);
-    console.log(info);
+
     try {
         const result = await duaModel.updateGems(batch_no, sn, info);
         res.status(200).send({'sn': sn ,'success' : true, 'result': result})
@@ -129,9 +127,7 @@ async function updateDate(req, res) {
     const sn = parseInt(req.params.sn);
     const date_info = req.body;
 
-    console.log(sn);
-    console.log(batch_no);
-    console.log(gems_info);
+   
     try {
         const result = await duaModel.updateGems(batch_no, sn, date_info);
         res.status(200).send({'sn': sn ,'success' : true, 'result': result})
@@ -148,9 +144,7 @@ async function certificateUpload(req, res) {
     const sn = parseInt(req.params.sn);
     const certificate = req.body.certificate;
 
-    console.log(level);
-    console.log(sn);
-    console.log(batch_no);
+
     try {
         const result = await duaModel.certificateUpload(batch_no, level, sn, certificate);
         res.status(200).send({'success' : true, 'result': result})

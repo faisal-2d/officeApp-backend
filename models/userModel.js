@@ -2,7 +2,7 @@
 const connectDB = require('../utils/db');
 
 async function createUser(name, email) {
-    console.log(name, email);
+  
     const db = await connectDB("users");
     const users = db.collection('all_users');
     return users.insertOne({ name, email });

@@ -4,7 +4,7 @@ const tafseerModel = require('../models/tafseerModel');
 async function registerStudent(req, res) {
     const batch_no = req.params.batch;
     const student = req.body;
-    console.log(student, batch_no);
+
     try {
         await tafseerModel.registerStudent(student, batch_no);
         res.status(201).send('Student registered successfully');
@@ -88,9 +88,7 @@ async function updateLeaderboard(req, res) {
     const batch_no = req.params.batch;
     const level = parseInt(req.params.level);
     const sn = parseInt(req.params.sn);
-    console.log(level);
-    console.log(sn);
-    console.log(batch_no);
+
     try {
         const result = await tafseerModel.updateLeaderboard(batch_no, level, sn);
         res.status(200).send({'sn': sn ,'success' : true, 'result': result})
@@ -103,8 +101,7 @@ async function getLeaderboard(req, res) {
     const batch_no = req.params.batch;
     const level = parseInt(req.params.level);
 
-    console.log(level);
-    console.log(batch_no);
+
     try {
         const result = await tafseerModel.getLeaderboard(batch_no, level);
         res.status(200).send({'success' : true, 'result': result})
@@ -133,9 +130,6 @@ async function certificateUpload(req, res) {
     const sn = parseInt(req.params.sn);
     const certificate = req.body.certificate;
 
-    console.log(level);
-    console.log(sn);
-    console.log(batch_no);
     try {
         const result = await tafseerModel.certificateUpload(batch_no, level, sn, certificate);
         res.status(200).send({'success' : true, 'result': result})

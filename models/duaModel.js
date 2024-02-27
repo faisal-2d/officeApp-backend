@@ -2,7 +2,7 @@
 const connectDB = require('../utils/db');
 
 async function registerStudent(student, batch_no) {
-    console.log(student, batch_no);
+
     const db = await connectDB("dua");
     const users = db.collection(`dua_${batch_no}_list`);
     const result = await users.insertOne(student);
@@ -94,7 +94,6 @@ async function updateReport(batch_no, sn, info) {
                 [`report.${index}.dua`] : student_dua_info,
                 [`todaysinfo.teaching`] : 1
               },
-
     }
     const result = await users.updateOne(filter, updateDocument);      
 

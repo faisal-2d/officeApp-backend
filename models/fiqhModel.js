@@ -2,7 +2,7 @@
 const connectDB = require('../utils/db');
 
 async function registerStudent(student, batch_no) {
-    console.log(student, batch_no);
+
     const db = await connectDB("fiqh");
     const users = db.collection(`fiqh_${batch_no}_list`);
     const result = await users.insertOne(student);
@@ -71,9 +71,6 @@ async function updateLeaderboard(batch_no, level, sn) {
     const scores = `fiqh${level}data`;
     const totalScores = `fiqh${level}Total`;
 
-    console.log(getStud);
-    console.log(scores);
-    console.log(totalScores);
 
     let totalScore = 0;
     for (const data of getStud[scores]) {

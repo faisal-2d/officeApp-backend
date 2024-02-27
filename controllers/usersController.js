@@ -3,7 +3,7 @@ const userModel = require('../models/userModel');
 
 async function createUser(req, res) {
     const { name, email } = req.body;
-    console.log(3, req.body);
+
     try {
         await userModel.createUser(name, email);
         res.status(201).send('User created successfully');
@@ -23,7 +23,7 @@ async function getUsers(req, res) {
 }
 async function getUser(req, res) {
     const name = req.params.name.toLowerCase();
-     console.log("Name: ", name);
+
     try {
         const users = await userModel.getUser(name);
         res.status(201).send(users);
