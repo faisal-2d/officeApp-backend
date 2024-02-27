@@ -37,8 +37,8 @@ async function getStudentById(batch_no, sn) {
 async function getTotalStudents(batch_no) {
     const db = await connectDB("tafseer");
     const users = db.collection(`tafseer_${batch_no}_list`);
-    const totalStudents = users.countDocuments();
-    return totalStudents;
+    const count = await users.countDocuments();
+    return count;
 }
 async function updateResult(batch_no, level, exm, sn, score) {
     const filter = {sn : sn}; 
