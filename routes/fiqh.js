@@ -5,7 +5,7 @@ const fiqhController = require('../controllers/fiqhController');
 
 router.get('/:batch', fiqhController.getStudents);
 router.get('/:batch/:name', fiqhController.getStudentByName);
-router.get('/count/:batch', fiqhController.getTotalStudents);
+router.get('/count/get/:batch', fiqhController.getTotalStudents);
 router.get('/:batch/sn/:sn', fiqhController.getStudentById);
 
 

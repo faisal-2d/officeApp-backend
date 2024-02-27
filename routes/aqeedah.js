@@ -5,7 +5,7 @@ const aqeedahController = require('../controllers/aqeedahController');
 
 router.get('/:batch', aqeedahController.getStudents);
 router.get('/:batch/:name', aqeedahController.getStudentByName);
-router.get('/count/:batch', aqeedahController.getTotalStudents);
+router.get('/count/get/:batch', aqeedahController.getTotalStudents);
 router.get('/:batch/sn/:sn', aqeedahController.getStudentById);
 
 
