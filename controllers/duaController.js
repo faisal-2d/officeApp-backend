@@ -125,11 +125,11 @@ async function updateCompletion(req, res) {
 async function updateDate(req, res) {
     const batch_no = req.params.batch;
     const sn = parseInt(req.params.sn);
-    const date_info = req.body;
+    const info = req.body;
 
    
     try {
-        const result = await duaModel.updateGems(batch_no, sn, date_info);
+        const result = await duaModel.updateGems(batch_no, sn, info);
         res.status(200).send({'sn': sn ,'success' : true, 'result': result})
     } catch (error) {
         console.error('Error creating user:', error);
