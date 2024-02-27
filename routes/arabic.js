@@ -5,7 +5,7 @@ const arabicController = require('../controllers/arabicController');
 
 router.get('/:batch', arabicController.getStudents);
 router.get('/:batch/:name', arabicController.getStudentByName);
-router.get('/:batch/count', arabicController.getTotalStudents);
+router.get('/count/:batch', arabicController.getTotalStudents);
 router.get('/:batch/sn/:sn', arabicController.getStudentById);
 
 

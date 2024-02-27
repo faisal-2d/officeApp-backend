@@ -5,7 +5,7 @@ const tafseerController = require('../controllers/tafseerController');
 
 router.get('/:batch', tafseerController.getStudents);
 router.get('/:batch/:name', tafseerController.getStudentByName);
-router.get('/:batch/count', tafseerController.getTotalStudents);
+router.get('/count/:batch', tafseerController.getTotalStudents);
 router.get('/:batch/sn/:sn', tafseerController.getStudentById);
 
 

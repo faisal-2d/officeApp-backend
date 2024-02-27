@@ -5,7 +5,7 @@ const seeratController = require('../controllers/seeratController');
 
 router.get('/:batch', seeratController.getStudents);
 router.get('/:batch/:name', seeratController.getStudentByName);
-router.get('/:batch/count', seeratController.getTotalStudents);
+router.get('/count/:batch', seeratController.getTotalStudents);
 router.get('/:batch/sn/:sn', seeratController.getStudentById);
 
 

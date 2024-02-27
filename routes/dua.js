@@ -5,7 +5,7 @@ const duaController = require('../controllers/duaController');
 
 router.get('/:batch', duaController.getStudents);
 router.get('/:batch/:name', duaController.getStudentByName);
-router.get('/:batch/count', duaController.getTotalStudents);
+router.get('/count/:batch', duaController.getTotalStudents);
 router.get('/:batch/sn/:sn', duaController.getStudentById);
 
 
