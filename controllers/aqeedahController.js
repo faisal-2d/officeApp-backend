@@ -61,8 +61,8 @@ async function updateResult(req, res) {
     const batch_no = req.params.batch;
     const level = parseInt(req.params.level);
     const exm = parseInt(req.params.exm);
-    const sn = parseInt(req.body.sn);
-    const score = parseInt(req.body.score);
+    const sn = parseInt(req.params.sn);
+    const score = req.body;
 
     try {
         const result = await aqeedahModel.updateResult(batch_no, level, exm, sn, score);
@@ -87,7 +87,7 @@ async function updatePayment(req, res) {
 async function updateLeaderboard(req, res) {
     const batch_no = req.params.batch;
     const level = parseInt(req.params.level);
-    const sn = parseInt(req.body.sn);
+    const sn = parseInt(req.params.sn);
     
     try {
         const result = await aqeedahModel.updateLeaderboard(batch_no, level, sn);

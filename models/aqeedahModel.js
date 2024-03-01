@@ -44,8 +44,9 @@ async function getTotalStudents(batch_no) {
 async function updateResult(batch_no, level, exm, sn, score) {
     const filter = {sn : sn}; 
     const updateDocument = {
-        $set : { [`aqeedah${level}data.${[exm-1]}.Score`] : score } ,
+        $set : { [`aqeedah${level}data.${[exm-1]}`] : score } ,
       }
+
     const db = await connectDB("aqeedah_16");
     const users = db.collection(`aqeedah_${batch_no}_list`);
     const result = await users.updateOne(filter, updateDocument);      
