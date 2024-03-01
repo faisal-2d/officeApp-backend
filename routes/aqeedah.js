@@ -18,14 +18,14 @@ router.put('/:batch/payment/:sn', aqeedahController.updatePayment)
 
 
 // result update Exm: 1,2,3, Level 1,3
-router.put('/:batch/:level/:exm/:sn', aqeedahController.updateResult)
+router.put('/:batch/:level/:exm', aqeedahController.updateResult)
 
 //leaderboard get
 router.get('/leaderboard/get/:batch/:level/', aqeedahController.getLeaderboard);
 
 
 //leaderboard update
-router.put('/leaderboard/update/:batch/:level/:sn', aqeedahController.updateLeaderboard)
+router.put('/leaderboard/update/:batch/:level', aqeedahController.updateLeaderboard)
 
 router.put('/accessLevelTwo/:batch/:sn', aqeedahController.accessLevelTwo)
 

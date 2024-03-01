@@ -44,7 +44,7 @@ async function getTotalStudents(batch_no) {
 async function updateResult(batch_no, level, exm, sn, score) {
     const filter = {sn : sn}; 
     const updateDocument = {
-        $set : { [`aqeedah${level}data.${[exm-1]}`] : score } ,
+        $set : { [`aqeedah${level}data.${[exm-1]}.Score`] : score } ,
       }
     const db = await connectDB("aqeedah_16");
     const users = db.collection(`aqeedah_${batch_no}_list`);
@@ -68,19 +68,14 @@ async function updateLeaderboard(batch_no, level, sn) {
     const users = db.collection(`aqeedah_${batch_no}_list`);    
     const getStud = await users.findOne(filter);
 
-    const scores = `aqeedah${level}data`;
-    const totalScores = `aqeedah${level}Total`;
-
-
-
     let totalScore = 0;
-    for (const data of getStud[scores]) {
+    for (const data of getStud[`aqeedah${level}data`]) {
       totalScore += data.Score;
     }
   
     // Construct the update document
     const updateDocument = await {
-      $set: { [totalScores] : totalScore },
+      $set: { [`aqeedah${level}Total`] : totalScore },
     };
   
     // Update the document in the collection
