@@ -50,13 +50,13 @@ async function getModerator(email) {
         return usersArray;
     }
 }
-async function getAssitant(email) {
+async function getAssistant(email) {
     const query = {email : email};    
     const db = await connectDB("users");
     const users = db.collection('all_users');
     const user = await users.findOne(query);
     if (user?.role3 === 'assistant') {
-        return { isAdmin: true};    
+        return { isAssistant: true};    
       }
     else {
 
@@ -65,4 +65,4 @@ async function getAssitant(email) {
 }
 
 
-module.exports = { createUser, getUsers, getUser, getAdmin, getModerator, getAssitant };
+module.exports = { createUser, getUsers, getUser, getAdmin, getModerator, getAssistant };

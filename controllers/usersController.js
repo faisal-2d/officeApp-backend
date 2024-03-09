@@ -52,10 +52,10 @@ async function getModerator(req, res) {
         res.status(500).send('Internal Server Error');
     }
 }
-async function getAssitant(req, res) {
+async function getAssistant(req, res) {
     const email = req.params.email.toLowerCase();
     try {
-        const users = await userModel.getAssitant(email);
+        const users = await userModel.getAssistant(email);
         res.status(201).send(users);
     } catch (error) {
         console.error('Error creating user:', error);
@@ -63,4 +63,4 @@ async function getAssitant(req, res) {
     }
 }
 
-module.exports = { createUser, getUsers, getUser, getAdmin, getModerator, getAssitant };
+module.exports = { createUser, getUsers, getUser, getAdmin, getModerator, getAssistant };

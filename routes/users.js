@@ -8,7 +8,7 @@ router.get('/', usersController.getUsers);
 
 router.get('/isadmin/:email', usersController.getAdmin);
 router.get('/ismoderator/:email', usersController.getModerator);
-router.get('/isassistant/:email', usersController.getAssitant);
+router.get('/isassistant/:email', usersController.getAssistant);
 
 router.post('/create', usersController.createUser);
 module.exports = router;
