@@ -72,12 +72,13 @@ async function updateDua(req, res) {
     }
 }
 async function updateReport(req, res) {
+    const topic = req.params.topic;
     const batch_no = req.params.batch;
     const sn = parseInt(req.params.sn);
     const info = req.body;
 
     try {
-        const result = await duaModel.updateReport(batch_no, sn, info);
+        const result = await duaModel.updateReport(topic, batch_no, sn, info);
         res.status(200).send({'sn': sn ,'success' : true, 'result': result})
     } catch (error) {
         console.error('Error creating user:', error);

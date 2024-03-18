@@ -19,7 +19,7 @@ router.put('/:batch/payment/:sn', duaController.updatePayment)
 
 // result update Dua: 1,2,3,
 router.put('/dua_update/:batch/:sn', duaController.updateDua)
-router.put('/report_update/:batch/:sn', duaController.updateReport)
+router.put('/report_update/:topic/:batch/:sn', duaController.updateReport)
 
 
 //gems update

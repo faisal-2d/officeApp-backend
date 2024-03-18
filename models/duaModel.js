@@ -72,21 +72,17 @@ async function updateDua(batch_no, sn, info) {
     const result = await users.updateOne(filter, updateDocument);      
     return result;
 }
-async function updateReport(batch_no, sn, info) {
+async function updateReport(topic, batch_no, sn, info) {
     const filter = {sn : sn};
 
     const index = info.index;
     
     const db = await connectDB("dua");
     const users = db.collection(`dua_${batch_no}_list`);
-    const student = await users.findOne(filter);
 
-    const student_dua_info = student.todaysinfo.dua;
-   
     const updateDocument = {
-        $set: { [`report.${index}.teaching`] : 1,
-                [`report.${index}.dua`] : student_dua_info,
-                [`todaysinfo.teaching`] : 1
+        $set: { [`report.${index}.${topic}`] : 1,
+                [`todaysinfo.${topic}`] : 1
               },
     }
     const result = await users.updateOne(filter, updateDocument);      
